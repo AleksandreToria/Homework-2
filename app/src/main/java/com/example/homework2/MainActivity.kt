@@ -16,6 +16,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+
+//        ბათონის, ტექსტვიუს და ედითტექსტის ინიციალიზაცია
         val button:Button = findViewById(R.id.button)
         textView = findViewById(R.id.textView)
 
@@ -26,6 +28,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+//    მთავარი ლოგიკა სადაც ხდება ტექსტვიუში ინფუთის გამოტანა
     private fun logic () {
             if (userInput[0] != '-' && userInput[0] > '0' && userInput.getOrNull(0)?.isDigit() == true) {
                 if (userInput.length == 3) {
@@ -76,6 +79,7 @@ class MainActivity : AppCompatActivity() {
             }
     }
 
+//    1 ციფრიანი
     private fun digits(number: String): String {
         return when (number) {
             "1" -> "ერთი"
@@ -92,6 +96,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+//    დაები :D
     private fun daebi(number: String): String {
         return when (number) {
             "1" -> ""
@@ -108,6 +113,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+//    ორ ციფრიანი
     private fun twoDigits(number: String): String {
         return when (number) {
             "1" -> "ათი"
@@ -124,6 +130,8 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+
+//    11 დან 20 მდე
     private fun elevenToTwenty(number: String): String {
         return when (number) {
             "1" -> "თერთმეტი"
@@ -140,6 +148,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+//    ასები
     private fun hundreds(number: String): String {
         return when (number) {
             "1" -> "ასი"
