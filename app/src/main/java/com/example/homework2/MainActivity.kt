@@ -9,7 +9,7 @@ import android.widget.Toast
 
 
 class MainActivity : AppCompatActivity() {
-    private var userInput:String = ""
+    private var userInput: String = ""
     private lateinit var textView: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -18,19 +18,20 @@ class MainActivity : AppCompatActivity() {
 
 
 //        ბათონის, ტექსტვიუს და ედითტექსტის ინიციალიზაცია
-        val button:Button = findViewById(R.id.button)
+        val button: Button = findViewById(R.id.button)
         textView = findViewById(R.id.textView)
 
         button.setOnClickListener() {
-            val editText:EditText = findViewById(R.id.editText)
+            val editText: EditText = findViewById(R.id.editText)
             userInput = editText.text.toString()
             logic()
         }
     }
 
-//    მთავარი ლოგიკა სადაც ხდება ტექსტვიუში ინფუთის გამოტანა
-    private fun logic () {
-            if (userInput[0] != '-' && userInput[0] > '0' && userInput.getOrNull(0)?.isDigit() == true) {
+    //    მთავარი ლოგიკა სადაც ხდება ტექსტვიუში ინფუთის გამოტანა
+    private fun logic() {
+        if (userInput.getOrNull(0)?.isDigit() == true && userInput.isNotEmpty()) {
+            if (userInput[0] != '-' && userInput[0] > '0') {
                 if (userInput.length == 3) {
                     if (userInput[1] == '0' && userInput[2] == '0') {
                         textView.text = hundreds(userInput[0].toString())
@@ -77,9 +78,16 @@ class MainActivity : AppCompatActivity() {
                     ).show()
                 }
             }
+
+        }
+        Toast.makeText(
+            applicationContext,
+            "გთხოვთ შეიყვანოთ რიცხვი 1-დან 1000-მდე",
+            Toast.LENGTH_LONG
+        ).show()
     }
 
-//    1 ციფრიანი
+    //    1 ციფრიანი
     private fun digits(number: String): String {
         return when (number) {
             "1" -> "ერთი"
@@ -96,7 +104,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-//    დაები :D
+    //    დაები :D
     private fun daebi(number: String): String {
         return when (number) {
             "1" -> ""
@@ -113,7 +121,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-//    ორ ციფრიანი
+    //    ორ ციფრიანი
     private fun twoDigits(number: String): String {
         return when (number) {
             "1" -> "ათი"
@@ -131,7 +139,7 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-//    11 დან 20 მდე
+    //    11 დან 20 მდე
     private fun elevenToTwenty(number: String): String {
         return when (number) {
             "1" -> "თერთმეტი"
@@ -148,7 +156,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-//    ასები
+    //    ასები
     private fun hundreds(number: String): String {
         return when (number) {
             "1" -> "ასი"
